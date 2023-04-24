@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-primary" (click)="open(content)">Agregar Colaboradores</button>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Agregar Colaborador a Viaje</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <select class="form-select">
+      <option hidden selected>Seleccione una Sucursal</option>
+      <option>Super Famacia Simán</option>
+      <option>Super Famacia Simán</option>
+      <option>Super Famacia Simán</option>
+      <option>Super Famacia Simán</option>
+    </select>
+			<div class="mb-3">
+					<Viaje-table-list></Viaje-table-list>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cerrar</button>
+	</div>
+</ng-template>

@@ -1,0 +1,39 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Colaborador</th>
+        <th scope="col">Sucursal</th>
+        <th scope="col">Distancia Recorrida</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>David Flores</td>
+        <td>Super Farmacia Simán</td>
+        <td>20 Km</td>
+        <td><button *ngIf="!isButtonAdd" class="btn btn-danger">Eliminar</button>
+        <button *ngIf="isButtonAdd" class="btn btn-primary">Agregar</button></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Manuel Duran</td>
+        <td>Simán Galerias</td>
+        <td>15 Km</td>
+        <td><button *ngIf="!isButtonAdd" class="btn btn-danger">Eliminar</button>
+        <button *ngIf="isButtonAdd" class="btn btn-primary">Agregar</button></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Manuel Duran</td>
+        <td>Simán Galerias</td>
+        <td>15 Km</td>
+        <td><button *ngIf="!isButtonAdd" class="btn btn-danger">Eliminar</button>
+        <button *ngIf="isButtonAdd" class="btn btn-primary">Agregar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
