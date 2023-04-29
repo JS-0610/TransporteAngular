@@ -1,0 +1,19 @@
+th,td{
+  text-align: center;
+}
+
+h3{
+  margin: 15px;
+  text-align: center;
+}
+
+.backButton{
+  position: absolute;
+}
+
+.accionEspacios{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px
+}

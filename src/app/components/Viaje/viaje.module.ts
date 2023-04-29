@@ -13,7 +13,7 @@ import { AddModalComponent } from './add-modal/add-modal.component';
     AddModalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports:[
     ViajeMainComponent

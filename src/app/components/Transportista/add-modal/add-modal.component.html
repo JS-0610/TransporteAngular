@@ -1,0 +1,50 @@
+<button type="button" class="btn btn-primary" (click)="open(content)">Agregar Transportista</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Transportista</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Nombre del Transportista:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Fecha de Nacimiento:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="form-control">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Teléfono:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Tarifa:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-outline-success" (click)="modal.close()">Agregar</button>
+  </div>
+</ng-template>

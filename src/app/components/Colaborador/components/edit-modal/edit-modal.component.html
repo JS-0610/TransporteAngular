@@ -1,0 +1,69 @@
+<ng-template #updatecontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Colaborador</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <form [formGroup]="updateColaboradorForm">
+      <div class="row contenedor">
+        <input type="hidden" class="form-control" id="ColaboradorId" formControlName="colaborador_Id">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorFirstName">Primer Nombre:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="ColaboradorFirstName" formControlName="primerNombre">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorLastName">Primer Apellido:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="ColaboradorLastName" formControlName="primerApellido">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorDni">DNI:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="ColaboradorDni" formControlName="dni">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorBornDay">Fecha de Nacimiento:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="form-control" id="ColaboradorBornDay" formControlName="fechaNacimiento">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorAddress">Dirección:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="ColaboradorAddress" formControlName="direccion">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="ColaboradorPhone">Teléfono:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="tel" class="form-control" id="ColaboradorPhone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" formControlName="telefono">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-outline-success" (click)="this.updateColaborador(this.updateColaboradorForm.value)">Agregar</button>
+  </div>
+</ng-template>

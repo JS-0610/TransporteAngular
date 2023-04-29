@@ -1,0 +1,39 @@
+<div class="container">
+  <form>
+    <div class="mb-3 row">
+      <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Buscar:</label>
+      <div class="col-xs-3 col-sm-auto">
+        <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter">
+      </div>
+    </div>
+  </form>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Colaborador</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colaborador of observable$ | async;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>
+          <ngb-highlight [result]="colaborador.primerNombre" [term]="filter.value"></ngb-highlight>&nbsp;<ngb-highlight [result]="colaborador.primerApellido" [term]="filter.value"></ngb-highlight>
+        </td>
+        <td><ngb-highlight [result]="colaborador.dni" [term]="filter.value"></ngb-highlight></td>
+        <td>{{colaborador.fechaNacimiento | date: 'yyyy-MM-dd'}}</td>
+        <td><ngb-highlight [result]="colaborador.direccion" [term]="filter.value"></ngb-highlight></td>
+        <td>{{colaborador.telefono}}</td>
+        <td class="accionEspacios">
+          <button class="btn btn-danger" (click)='delete(colaborador.colaborador_Id)'>Eliminar</button>
+          <button class="btn btn-warning" (click)="sendDataUpdate(colaborador)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

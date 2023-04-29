@@ -1,0 +1,10 @@
+th,td{
+  text-align: center;
+}
+
+.accionEspacios{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px
+}
