@@ -1,0 +1,29 @@
+
+<div class="container">
+
+
+  <button class="btn btn-primary backButton" (click)="changeVerDetalle()">Regresar</button>
+
+  <h3>Detalle del Viaje</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre del Colaborador</th>
+        <th scope="col">Distancia recorrida</th>
+        <th scope="col">Pago</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let detalle of listadoViajeDetalle | filter:searchText | orderBy:keyForSort:reverseForSort  | paginate:{itemsPerPage:5,currentPage:paginationNumber,totalItems:listadoViajeDetalle.length} ;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{detalle.nombreColaborador}}</td>
+        <td>{{detalle.distanciaRecorrida.toFixed(2)}} Km</td>
+        <td>{{detalle.pago | currency:"L."}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="paginationNumber= $event"></pagination-controls>
+</div>

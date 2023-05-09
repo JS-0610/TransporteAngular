@@ -1,0 +1,37 @@
+th,td{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+  margin: 10px;
+}
+
+.accionEspacios{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px
+}
+
+select{
+  width: auto;
+}
+
+label{
+  text-align: right;
+  margin-right: 0.5rem;
+}
+select,input {
+  display: inline-block;
+  vertical-align: middle;
+  width: 12rem;
+}
+
+.contenedor{
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  gap: 1.5rem;
+}

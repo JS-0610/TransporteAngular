@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReporteViajeModule,
     SidebarModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

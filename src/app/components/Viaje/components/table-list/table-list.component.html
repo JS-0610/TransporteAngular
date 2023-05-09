@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Colaborador</th>
+        <th scope="col">Sucursal</th>
+        <th scope="col">Distancia Recorrida</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colaborador of listadoColaboradorEnViaje | slice: (page-1) * pageSize : page * pageSize ;let i=index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{colaborador.nombreColaborador}}</td>
+        <td>{{colaborador.nombreSucursal}}</td>
+        <td>{{colaborador.distancia.toFixed(2)}} Km</td>
+        <td><button class="btn btn-danger" (click)="RemoverColaborador(colaborador)">Eliminar</button>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="listadoColaboradorEnViaje.length"></ngb-pagination>
+</div>

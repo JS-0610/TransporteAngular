@@ -1,0 +1,51 @@
+<ng-template #updateTransportistaContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Actualizar Transportista</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="this.closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <form [formGroup]="updateTransportistaForm">
+        <input type="hidden" formControlName="transportista_Id">
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Nombre del Transportista:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" formControlName="primerNombre">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Fecha de Nacimiento:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="date" class="form-control" formControlName="fechaNacimiento">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Teléfono:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="tel" class="form-control" formControlName="telefono" mask="(000)0000-0000">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-6">
+          <label class="col-form-label">Tarifa:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" formControlName="tarifa" mask="separator.2" thousandSeparator=",">
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-outline-success" [disabled]="this.updateTransportistaForm.invalid" (click)="this.updateTransportista(updateTransportistaForm.value)">Agregar</button>
+  </div>
+</ng-template>

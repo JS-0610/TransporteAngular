@@ -1,7 +1,7 @@
 <ng-template #updatecontent let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Editar Colaborador</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="this.closeModal()"></button>
   </div>
   <div class="modal-body">
     <div class="row g-3 align-items-center">
@@ -30,7 +30,7 @@
           <label class="col-form-label" for="ColaboradorDni">DNI:</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="ColaboradorDni" formControlName="dni">
+          <input type="text" class="form-control" id="ColaboradorDni" formControlName="dni" mask="0000-0000-00000">
         </div>
       </div>
 
@@ -57,13 +57,13 @@
           <label class="col-form-label" for="ColaboradorPhone">Teléfono:</label>
         </div>
         <div class="col-md-6">
-          <input type="tel" class="form-control" id="ColaboradorPhone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" formControlName="telefono">
+          <input type="tel" class="form-control" id="ColaboradorPhone" mask="(000)0000-0000" formControlName="telefono">
         </div>
       </div>
       </form>
     </div>
   </div>
   <div class="modal-footer contenedor">
-    <button type="button" class="btn btn-outline-success" (click)="this.updateColaborador(this.updateColaboradorForm.value)">Agregar</button>
+    <button type="button" class="btn btn-outline-success" [disabled]="this.updateColaboradorForm.invalid" (click)="this.updateColaborador(this.updateColaboradorForm.value)">Actualizar</button>
   </div>
 </ng-template>

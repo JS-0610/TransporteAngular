@@ -7,8 +7,5 @@ import { updateColaborador } from '../../models/colaborador.model';
   styleUrls: ['./colaborador-main.component.css']
 })
 export class ColaboradorMainComponent {
-  colaboradorData!: updateColaborador;
-  dataForUpdate(data:updateColaborador){
-    this.colaboradorData=data;
-  }
+
 }

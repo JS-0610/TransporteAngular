@@ -9,6 +9,6 @@ export const environment = {
     Transportista: `${urlBase}/Transportista`,
     NombreTransportista: `${urlBase}/Transportista/Nombres`,
     Viaje: `${urlBase}/Viaje`,
-    ViajeDetale: `${urlBase}/ViajeDetalle`,
+    ViajeDetalle: `${urlBase}/ViajeDetalle`,
 
 }

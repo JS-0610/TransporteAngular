@@ -1,0 +1,66 @@
+<div class="container contenedor">
+  <form [formGroup]="dataForViajeForm" class="contenedor">
+    <div>
+      <label>Seleciona un Transportista: </label>
+      <select class="form-select" formControlName="transportista_Id">
+        <option *ngFor="let transportista of listadoNombreTransportista" [ngValue]="transportista.transportista_Id">
+          {{transportista.primerNombre}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Fecha Inicial: </label>
+      <input type="date" class="form-control" formControlName="fechaInicio">
+    </div>
+
+    <div>
+      <label>Fecha Final: </label>
+      <input type="date" class="form-control" formControlName="fechaFinal">
+    </div>
+
+    <div>
+      <input type="button" class="btn btn-primary" value="Ver Reporte" (click)="getViajes(this.dataForViajeForm.value)">
+    </div>
+
+  </form>
+</div>
+<div class="container">
+  <h3>Reporte de Viajes</h3>
+  <div class="d-flex flex-row justify-content-between">
+    <div class="mb-3 row">
+      <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Buscar:</label>
+      <div class="col-xs-3 col-sm-auto">
+        <input name="search" class="form-control" type="text" [(ngModel)]="searchText">
+      </div>
+    </div>
+    <div class="mb-3 row" *ngIf="PagoTotalRangoFecha!=0">
+      <label class="fw-bold">Pago Total: {{PagoTotalRangoFecha | currency:"L."}}</label>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre transportista</th>
+        <th scope="col">Fecha de Viaje</th>
+        <th scope="col">Tarifa</th>
+        <th scope="col">Distancia recorrida</th>
+        <th scope="col">Pago</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let viaje of listadoViaje | filter:searchText | orderBy:keyForSort:reverseForSort  | paginate:{itemsPerPage:8,currentPage:paginationNumber,totalItems:listadoViaje.length} ;let i=index"
+        (click)="setDataDetalles(viaje.viaje_Id)">
+        <th scope="row">{{i+1}}</th>
+        <td>{{viaje.nombreTransportista}}</td>
+        <td>{{viaje.fecha | date:"dd-MM-yyyy"}}</td>
+        <td>{{viaje.tarifaTransportista | currency:"L."}}</td>
+        <td>{{viaje.distanciaRecorrida.toFixed(2)}} Km</td>
+        <td>{{viaje.pagoTransportista | currency:"L."}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="paginationNumber= $event"></pagination-controls>
+</div>

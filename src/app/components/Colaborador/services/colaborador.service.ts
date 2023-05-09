@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { environment } from 'src/app/enviroment/enviroment';
-import { Colaborador, addColaborador, updateColaborador } from '../models/colaborador.model';
+import { Colaborador, addColaborador, deleteColaborador, updateColaborador } from '../models/colaborador.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -20,15 +20,15 @@ export class ColaboradorService {
   }
 
   addColaborador(body: addColaborador) {
-    return this.http.post(environment.Colaborador, body,{observe:'response'});
+    return this.http.post(environment.Colaborador, body,{responseType:'text'});
   }
 
   updateColaborador(body: updateColaborador) {
-    return this.http.put(environment.Colaborador, body,{observe:'response'});
+    return this.http.put(environment.Colaborador, body,{responseType:'text'});
   }
 
-  DeleteColaborador(id: number) {
-    return this.http.delete(environment.Colaborador+"/"+id,{observe:'response'});
+  DeleteColaborador(body: deleteColaborador) {
+    return this.http.request('delete',environment.Colaborador,{body:body,responseType:'text'});
   }
 
   reload$ = new BehaviorSubject<boolean>(false);

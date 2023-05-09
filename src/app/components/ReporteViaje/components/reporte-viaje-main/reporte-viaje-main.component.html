@@ -1,0 +1,21 @@
+<div class="container" *ngIf="!verDetalle">
+
+  <reporteviaje-table-list-viaje
+    (dataFromViaje)="getDataFromViaje($event)"
+    (ViajeId)="getViajeId($event)"
+    (verViajeDetalles)="verDetalle=true"
+    [dataOfViaje]="datosDelViajeSeleccionado"
+  ></reporteviaje-table-list-viaje>
+
+
+</div>
+
+<div *ngIf="verDetalle">
+  <reporteviaje-table-list-detalle
+      [viajeID]="viajeSelecccionadoId"
+      [dataFromViaje]="datosDelViajeSeleccionado"
+      (VerDetalle)="verDetalle=false"
+      (datosViaje)="getDataFromViaje($event)"
+  ></reporteviaje-table-list-detalle>
+</div>
+

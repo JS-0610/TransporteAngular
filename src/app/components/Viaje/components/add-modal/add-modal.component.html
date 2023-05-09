@@ -1,0 +1,56 @@
+<button type="button" class="btn btn-primary" (click)="open(content)">Agregar Colaboradores</button>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Agregar Colaborador a Viaje</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="container">
+    <div class="contenedor container">
+      <form [formGroup]="SelectedSucursalForm">
+        <label for="selectSucursal" class="col-xs-3 col-sm-auto col-form-label">Seleccione Sucursal:</label>
+        <select id="selectSucursal" class="form-select" (change)="SelectedSucursal(this.SelectedSucursalForm.value)" formControlName="sucursal_Id">
+          <option *ngFor="let sucursal of listadoSucursales" [ngValue]="sucursal.sucursal_Id">{{sucursal.nombre}}</option>
+        </select>
+      </form>
+    </div>
+    <hr>
+    <form>
+      <div class="mb-3 row contenedor">
+        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Buscar:</label>
+        <div class="col-xs-3 col-sm-auto">
+          <input name="search" class="form-control" type="text" [(ngModel)]="searchText">
+        </div>
+      </div>
+    </form>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" (click)="sort('nombreColaborador')">Nombre Colaborador</th>
+          <th scope="col">Sucursal</th>
+          <th scope="col">Distancia(Km)</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sucursalColaborador of listadoSucursal | filter:searchText | orderBy:keyForSort:reverseForSort  | paginate:{itemsPerPage:5 ,currentPage:paginationNumberModal,totalItems:listadoSucursal.length} ;let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{sucursalColaborador.nombreColaborador}}</td>
+          <td>{{sucursalColaborador.nombreSucursal}}</td>
+          <td>{{sucursalColaborador.distancia.toFixed(2)}} km</td>
+          <td>
+            <button class="btn btn-primary" (click)="AgregarViaje(sucursalColaborador)">Agregar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      <pagination-controls (pageChange)="paginationNumberModal = $event"></pagination-controls>
+
+  </div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cerrar</button>
+	</div>
+</ng-template>
+
+

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <form>
+      <div class="mb-3 row">
+        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Buscar:</label>
+        <div class="col-xs-3 col-sm-auto">
+          <input name="search" class="form-control" type="text" [(ngModel)]="searchText">
+        </div>
+      </div>
+    </form>
+    <sucursal-colaborador-add-modal></sucursal-colaborador-add-modal>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" (click)="sort('nombreColaborador')">Nombre Colaborador</th>
+        <th scope="col">Sucursal</th>
+        <th scope="col">Distancia(Km)</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sucursalColaborador of listadoSucursalColaboradores | filter:searchText | orderBy:keyForSort:reverseForSort  | paginate:{itemsPerPage:10,currentPage:paginationNumber,totalItems:listadoSucursalColaboradores.length} ;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{sucursalColaborador.nombreColaborador}}</td>
+        <td>{{sucursalColaborador.nombreSucursal}}</td>
+        <td>{{sucursalColaborador.distancia.toFixed(2)}} km</td>
+        <td class="accionEspacios">
+          <button class="btn btn-danger" (click)="delete(sucursalColaborador)">Eliminar</button>
+          <button class="btn btn-warning" (click)="sendDataUpdate(sucursalColaborador)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="paginationNumber = $event"></pagination-controls>
+</div>

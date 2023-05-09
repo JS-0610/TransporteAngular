@@ -1,0 +1,33 @@
+<button type="button" class="btn btn-primary" (click)="open(content)">Agregar Sucursal</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Sucursal</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <form [formGroup]="AddSucursalForm">
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="SucursalName">Nombre de la Sucursal:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="SucursalName" formControlName="nombre">
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-5">
+          <label class="col-form-label" for="SucursalAddress">Dirección:</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="SucursalAddress" formControlName="direccion">
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-success" [disabled]="this.AddSucursalForm.invalid" (click)="this.addSucursal(this.AddSucursalForm.value)">Agregar</button>
+  </div>
+</ng-template>

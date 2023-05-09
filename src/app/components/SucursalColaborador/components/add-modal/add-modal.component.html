@@ -1,0 +1,46 @@
+<button type="button" class="btn btn-primary" (click)="open(content)">Asignar Sucursal</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Asignar Sucursal a Colaborador</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <form [formGroup]="addSucursalColaboradorForm">
+      <div class="row contenedor">
+        <div class="col-md-4">
+          <label class="col-form-label">Nombre del Colaborador:</label>
+        </div>
+        <div class="col-md-7">
+          <select class="form-select"  formControlName="colaborador_Id">
+            <option *ngFor="let colaborador of nombresColaboradores" [ngValue]="colaborador.colaborador_Id">{{colaborador.primerNombre}} {{colaborador.primerApellido}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-4">
+          <label class="col-form-label">Nombre de la Sucursal:</label>
+        </div>
+        <div class="col-md-7">
+          <select class="form-select" formControlName="sucursal_Id">
+            <option *ngFor="let sucursal of nombresSucursales" [ngValue]="sucursal.sucursal_Id">{{sucursal.nombre}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row contenedor">
+        <div class="col-md-4">
+          <label class="col-form-label" for="SCDistancia">Distancia:</label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="form-control" id="SCDistancia" mask="separator.2" thousandSeparator="," formControlName="distancia">
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-outline-success" [disabled]="this.addSucursalColaboradorForm.invalid" (click)="addSucursalColaborador(this.addSucursalColaboradorForm.value)">Agregar</button>
+  </div>
+</ng-template>

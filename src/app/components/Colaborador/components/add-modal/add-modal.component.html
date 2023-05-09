@@ -30,7 +30,7 @@
           <label class="col-form-label" for="ColaboradorDni">DNI:</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="ColaboradorDni" formControlName="dni">
+          <input type="text" class="form-control" id="ColaboradorDni" formControlName="dni" mask="0000-0000-00000">
         </div>
       </div>
 
@@ -57,13 +57,13 @@
           <label class="col-form-label" for="ColaboradorPhone">Teléfono:</label>
         </div>
         <div class="col-md-6">
-          <input type="tel" class="form-control" id="ColaboradorPhone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" formControlName="telefono">
+          <input type="text" class="form-control" id="ColaboradorPhone" mask="(000)0000-0000" formControlName="telefono">
         </div>
       </div>
       </form>
     </div>
   </div>
   <div class="modal-footer contenedor">
-    <button type="button" class="btn btn-outline-success" (click)="this.addColaborador(this.AddColaboradorForm.value)">Agregar</button>
+    <button type="button" class="btn btn-success" [disabled]="this.AddColaboradorForm.invalid" (click)="this.addColaborador(this.AddColaboradorForm.value)">Agregar</button>
   </div>
 </ng-template>

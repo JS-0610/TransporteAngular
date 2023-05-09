@@ -27,3 +27,7 @@ export interface updateColaborador{
   direccion: string,
   telefono: string
 }
+
+export interface deleteColaborador{
+  colaborador_Id: number
+}

@@ -1,0 +1,24 @@
+<ng-template #updateSucursalColaboradorContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar distancia</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="this.closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row g-3 align-items-center">
+      <form [formGroup]="updateSucursalColaboradorForm">
+      <input type="hidden" formControlName="sucursalColaborador_Id">
+      <div class="row contenedor">
+        <div class="col-md-2">
+          <label class="col-form-label" for="SCDistancia">Distancia:</label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="form-control" id="SCDistancia" mask="separator.2" thousandSeparator="," formControlName="distancia">
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <div class="modal-footer contenedor">
+    <button type="button" class="btn btn-outline-success" [disabled]="this.updateSucursalColaboradorForm.invalid" (click)="updateSucursalColaborador(this.updateSucursalColaboradorForm.value)">Agregar</button>
+  </div>
+</ng-template>

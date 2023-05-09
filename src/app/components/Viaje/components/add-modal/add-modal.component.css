@@ -1,0 +1,11 @@
+select{
+  width: auto;
+}
+
+.contenedor{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px;
+  gap: 10px;
+}

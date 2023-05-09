@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <form>
+      <div class="mb-3 row">
+        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Buscar:</label>
+        <div class="col-xs-3 col-sm-auto">
+          <input name="search" class="form-control" type="text" [(ngModel)]="searchText">
+        </div>
+      </div>
+    </form>
+    <transportista-add-modal></transportista-add-modal>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="col-num">#</th>
+        <th scope="col">Nombre de Transportista</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Tarifa(L.)</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transportista of listadoTransportista | filter:searchText | orderBy:keyForSort:reverseForSort  | paginate:{itemsPerPage:10,currentPage:paginationNumber,totalItems:listadoTransportista.length} ;let i=index">
+        <th scope="row" class="col-num">{{i+1}}</th>
+        <td>{{transportista.primerNombre}}</td>
+        <td>{{transportista.fechaNacimiento | date:"dd-MM-yyyy"}}</td>
+        <td>{{transportista.telefono | telefono}}</td>
+        <td>{{transportista.tarifa | currency:'L.'}}</td>
+        <td class="accionEspacios">
+          <button class="btn btn-danger" (click)="delete(transportista)">Eliminar</button>
+          <button class="btn btn-warning" (click)="sendDataUpdate(transportista)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="paginationNumber = $event"></pagination-controls>
+</div>
